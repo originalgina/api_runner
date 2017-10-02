@@ -16,19 +16,19 @@ class Api::PostsController < ApplicationController
   def create
     @post = Post.new params.require(:post).permit(:title)
     if @post.save
-       render status: 201, json: @post
+      render status: 201, json: @post
     else
-       render status: 422, json: @post.errors
+      render status: 422, json: @post.errors
     end
   end
 
   def update
-      @post = Post.find params[:id]
-      if @post.update params.require(:post).permit(:title)
-        render status: 201, json: @post
-      else
+    @post = Post.find params[:id]
+    if @post.update params.require(:post).permit(:title)
+      render status: 201, json: @post
+    else
       render status: 422, json: @post.errors
-      end
+    end
   end
 
     def delete
